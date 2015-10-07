@@ -9,7 +9,7 @@
  * AddressServiceRest reads its configuration values from parameters in the constructor
  *
  * <p>
- * <b>Example:</b>
+ * <b>Example:</b>E
  * <pre>
  *  $addressService = new AddressServiceRest("https://development.avalara.net","1100012345","1A2B3C4D5E6F7G8");
  * </pre>
@@ -49,8 +49,8 @@ class AddressServiceRest
 	public function validate($validateRequest)
 	{
 		if(!(filter_var($this->config['url'],FILTER_VALIDATE_URL)))			throw new \Exception("A valid service URL is required.");
-		if(empty($this->config['account']))		throw new Exception("Account number or username is required.");
-		if(empty($this->config['license']))		throw new Exception("License key or password is required.");
+		if(empty($this->config['account']))		throw new \Exception("Account number or username is required.");
+		if(empty($this->config['license']))		throw new \Exception("License key or password is required.");
 
 		$url =  $this->config['url'].'/1.0/address/validate?'. http_build_query($validateRequest->getAddress());
 		$curl = curl_init();
